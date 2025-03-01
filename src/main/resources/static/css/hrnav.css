@@ -1,0 +1,31 @@
+.main-container
+{
+	background-color: #131379bd;
+	border-radius: 0px 0PX 100PX 100PX;
+}
+.inner-container
+{
+	display: flex;
+	width: 85%;
+	margin: auto;
+	align-items: center;
+	color: white;
+	justify-content:space-around;
+}
+.main-container img
+{
+	width: 95px;
+}
+.main-container h3
+{
+	margin: 10px 0px;
+}
+.left-container
+{
+	width: 20%;
+}
+
+.middle-container,.right-container
+{
+	width: 35%;
+}
