@@ -10,13 +10,13 @@ import com.mindgate.main.domain.Employee;
 
 public interface EmployeeDetailsRepositoryInterface 
 {
-	public Employee validateEmployee(String username ,String password);
+	public Employee validateEmployee(String username ,String password) throws Exception;
 	
 	public boolean checkEmployeeExist(String username);
-	public Employee getEmployee(String employeeId);
-	public List<Employee> getEmployeeOnWorkBench();
-	public boolean updateEmployeeProjectId(String employeeId, String projectId);
-	public List<Employee> getInterviewerDetails();
-	public boolean insertEmployee(Employee employee);
-	public boolean deleteEmployeeDetail(String FIRSTNAME,String LASTNAME,int AGE,String ROLE,String PRIMARY_SKILL,String SECONDARY_SKILL,String TERNARY_SKILL,String  DESIGNATION);
+	public Employee getEmployee(Long employeeId) throws Exception;
+	public List<Employee> getEmployeeOnWorkBench() throws Exception;
+	public boolean updateEmployeeProjectId(Long employeeId,Long projectId) throws Exception;
+	public List<Employee> getInterviewerDetails() throws Exception;
+	public boolean insertEmployee(Employee employee) throws Exception;
+	public boolean deleteEmployeeDetail(String FIRSTNAME,String LASTNAME,int AGE,String ROLE,String PRIMARY_SKILL,String SECONDARY_SKILL,String TERNARY_SKILL,String  DESIGNATION) throws Exception;
 }

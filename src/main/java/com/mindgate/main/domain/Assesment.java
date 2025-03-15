@@ -1,23 +1,38 @@
 package com.mindgate.main.domain;
 
+
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
+
+@Entity
 public class Assesment {
-	private String assesmentId;
+	
+	 @Id 
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long assesmentId;
 private String techSkill;
 private String communication;
 private String softSkill;
+
+@OneToOne
 private Candidate candidate;
 private String status;
 private Date interviewDate;
 
 public Assesment() {}
 
-public String getAssesmentId() {
+public Long getAssesmentId() {
 	return assesmentId;
 }
 
-public void setAssesmentId(String assesmentId) {
+public void setAssesmentId(Long assesmentId) {
 	this.assesmentId = assesmentId;
 }
 
@@ -69,7 +84,7 @@ public void setInterviewDate(Date interviewDate) {
 	this.interviewDate = interviewDate;
 }
 
-public Assesment(String assesmentId, String techSkill, String communication, String softSkill, Candidate candidate,
+public Assesment(Long assesmentId, String techSkill, String communication, String softSkill, Candidate candidate,
 		String status, Date interviewDate) {
 	super();
 	this.assesmentId = assesmentId;

@@ -2,8 +2,24 @@ package com.mindgate.main.domain;
 
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
+@Entity
 public class Candidate {
-	private String candidateId;
+	@Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long candidateId;
+	
+    @ManyToOne()
+    @JoinColumn(name="jobDescriptionId")
 	private JobDescription jobDescription;
 	private String name;
 	private int age;
@@ -13,19 +29,43 @@ public class Candidate {
 	private String primarySkill;
 	private String secondarySkill;
 	private String ternarySkill;
+	
+	private String status;
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="employeeId")
 	private Employee employee;
 	private Date interviewDate;
 	private String sendOfferLetter;
+	
+	public Assesment getAssesment() {
+		return assesment;
+	}
+
+	public void setAssesment(Assesment assesment) {
+		this.assesment = assesment;
+	}
+
+	@OneToOne
+	private Assesment assesment;
 
 	public Candidate() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getCandidateId() {
+	public Long getCandidateId() {
 		return candidateId;
 	}
 
-	public void setCandidateId(String candidateId) {
+	public void setCandidateId(Long candidateId) {
 		this.candidateId = candidateId;
 	}
 
@@ -125,7 +165,7 @@ public class Candidate {
 		this.sendOfferLetter = sendOfferLetter;
 	}
 
-	public Candidate(String candidateId, JobDescription jobDescription, String name, int age, int experience,
+	public Candidate(Long candidateId, JobDescription jobDescription, String name, int age, int experience,
 			String email, int contactNumber, String primarySkill, String secondarySkill, String ternarySkill,
 			Employee employee, Date interviewDate, String sendOfferLetter) {
 		super();

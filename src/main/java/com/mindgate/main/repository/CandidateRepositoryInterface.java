@@ -7,29 +7,29 @@ import com.mindgate.main.domain.Candidate;
 
 public interface CandidateRepositoryInterface {
     
-    public boolean addCandidate(Candidate candidate);
+    public boolean addCandidate(Candidate candidate) throws Exception;
     
-    public boolean  assignInterviewer(String interviewerId, String candidateId);
+    public boolean  assignInterviewer(Long interviewerId, Long candidateId) throws Exception;
     
-    public boolean deleteCandidate(String candidateId);
+    public boolean deleteCandidate(Long candidateId) throws Exception;
     
-    public List<Candidate> getAllCandidate();
+    public List<Candidate> getAllCandidate() throws Exception;
     
-    public List<Candidate> getCandidateByInterviewerId(String InterviewerId);
+    public List<Candidate> getCandidateByInterviewerId(Long InterviewerId) throws Exception;
     
-    public List<Candidate> getCandidateByStatus(String status);
+    public List<Candidate> getCandidateByStatus(String status) throws Exception;
     
     
-    public Candidate getCandidateByCandidateId(String candidateId);
+    public Candidate getCandidateByCandidateId(Long candidateId);
     
-    public boolean updateInterviewerId(String interviewerId, String candidateId, Date interviewDate);
+    public boolean updateInterviewerId(Long interviewerId, Long candidateId, Date interviewDate) throws Exception;
     
-    public List<Candidate> getCandidateHaveInterviewSchedule();
-    public boolean setCandidateJobdescriptionIdNull(String candidateId);
+    public List<Candidate> getCandidateHaveInterviewSchedule() throws Exception;
+    public boolean setCandidateJobdescriptionIdNull(Long candidateId) throws Exception;
     
-    public boolean updateCandidateSetSendMail(String candidateId);
+    public boolean updateCandidateSetSendMail(Long candidateId)throws Exception;
     
-    public boolean updateSendOfferLetter(String sendOfferLetter, String candidateId);
+    public boolean updateSendOfferLetter(String sendOfferLetter, Long candidateId)throws Exception;
   
     
     
