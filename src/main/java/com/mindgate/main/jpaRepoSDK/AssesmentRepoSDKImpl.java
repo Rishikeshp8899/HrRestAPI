@@ -11,7 +11,7 @@ import com.mindgate.main.domain.Assesment;
 import com.mindgate.main.jpaRepo.AssesmentRepo;
 import com.mindgate.main.repository.AssesmentRepositoryInterface;
 
-@Service
+@Service("AssesmentRepoSDKImpl")
 public class AssesmentRepoSDKImpl implements AssesmentRepositoryInterface {
 
 	private static final Logger logger = LoggerFactory.getLogger(AssesmentRepoSDKImpl.class);
@@ -54,12 +54,13 @@ public class AssesmentRepoSDKImpl implements AssesmentRepositoryInterface {
 	}
 
 	@Override
-	public void insertAssesmentDetails(Assesment assesment) throws Exception {
+	public boolean insertAssesmentDetails(Assesment assesment) throws Exception {
 		logger.info("AssesmentRepoSDKImpl --> insertAssesmentDetails --> insider");
 		if (assesmentRepo.save(assesment) == null) {
 			logger.error("assesment not able to insert in db");
 			throw new Exception("insertAssesmentDetails is null");
 		}
+		return true;
 	}
 
 	@Override

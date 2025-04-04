@@ -34,7 +34,7 @@ public class EmployeeDetailsRestController {
 	
 		 Employee employee= employeeDetailsServiceInterface.getEmployee(TlId);
 		 
-		Project project=projectServiceInterface.getProjectDetails(employee.getProject().getProjectId());
+		Project project=projectServiceInterface.getProjectDetails(String.valueOf( employee.getProject().getProjectId()));
 		
 		
 		if(project != null) {

@@ -9,7 +9,7 @@ public interface JobDescriptionRepositoryInterface {
     public List<JobDescription> getJobDescriptionBySendToHR() throws Exception;
     public boolean addJobDescription(JobDescription jobDescription) throws Exception;
     public boolean updateJobDescription(JobDescription jobDescription) throws Exception;
-    public boolean updateRequiredCandidate(int requided_candidate, Long jobDescriptionId ) throws Exception;
+    public boolean updateRequiredCandidate(int requiredCandidate, Long jobDescriptionId ) throws Exception;
     public boolean updateSendToHr(Long jobDescriptionId, String value) throws Exception;
     public List<JobDescription> getAllJobdescription();
     public List<JobDescription> getJobDescriptionByPRojectId(Long ProjectId)throws Exception;
@@ -22,5 +22,5 @@ public interface JobDescriptionRepositoryInterface {
     public boolean postJobDescription(Long jobDescriptionId ) throws Exception;
     public List<JobDescription> getAllJobDiscriptionByPost() throws Exception;
     public boolean decrementRequiredCandidate(Long jobDescriptionId) throws Exception;
-    public boolean updateStatusJobDescription(Long jobDescriptionId) throws Exception;
+    public boolean updateStatusJobDescriptionFulfiled(Long jobDescriptionId) throws Exception;
 }

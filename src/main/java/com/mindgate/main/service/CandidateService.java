@@ -13,6 +13,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -23,62 +24,94 @@ import com.mindgate.main.repository.CandidateRepositoryInterface;
 @Service
 public class CandidateService implements CandidateServiceInterface {
 	@Autowired
+	@Qualifier("CandidateRepoSDKImpl")
 	private CandidateRepositoryInterface candidateRepositoryInterface;
 
 	@Override
 	public boolean addCandidate(Candidate candidate) {
 
-		if (candidateRepositoryInterface.addCandidate(candidate))
-			return true;
+		try {
+			if (candidateRepositoryInterface.addCandidate(candidate))
+				return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean assignInterviewer(String interviewerId, String candidateId) {
-		if (candidateRepositoryInterface.assignInterviewer(interviewerId, candidateId))
-			return true;
+		try {
+			if (candidateRepositoryInterface.assignInterviewer(Long.parseLong(interviewerId), Long.parseLong(candidateId)))
+				return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 		return false;
 	}
 
 	@Override
 	public boolean deleteCandidate(String candidateId) {
-		if (candidateRepositoryInterface.deleteCandidate(candidateId))
-			return true;
+		try {
+			if (candidateRepositoryInterface.deleteCandidate(Long.parseLong(candidateId)))
+				return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return false;
 	}
 
 	@Override
 	public List<Candidate> getAllCandidate() {
-		List<Candidate> candidateList = candidateRepositoryInterface.getAllCandidate();
-		if (!candidateList.isEmpty())
-			return candidateList;
-		return null;
+		List<Candidate> candidateList=null;
+		try {
+			candidateList = candidateRepositoryInterface.getAllCandidate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return candidateList;
+		
 	}
 
 	@Override
 	public List<Candidate> getCandidateByInterviewerId(String InterviewerId) {
-		List<Candidate> candidateByInterviewerId = candidateRepositoryInterface
-				.getCandidateByInterviewerId(InterviewerId);
-		if (!candidateByInterviewerId.isEmpty())
+		List<Candidate> candidateByInterviewerId=null;
+		try {
+			candidateByInterviewerId = candidateRepositoryInterface
+					.getCandidateByInterviewerId(Long.parseLong(InterviewerId));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			return candidateByInterviewerId;
 
-		return null;
 	}
 
 	@Override
 	public List<Candidate> getCandidateByStatus(String status) {
-		List<Candidate> candidateByStatus = candidateRepositoryInterface.getCandidateByStatus(status);
+		List<Candidate> candidateByStatus =null;
+		try {
+			candidateByStatus = candidateRepositoryInterface.getCandidateByStatus(status);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		if (!candidateByStatus.isEmpty())
+	
 			return candidateByStatus;
-		return null;
+		
 	}
 
 	@Override
 	public Candidate getCandidateByCandidateId(String candidateId) {
 
-		return candidateRepositoryInterface.getCandidateByCandidateId(candidateId);
+		return candidateRepositoryInterface.getCandidateByCandidateId(Long.parseLong(candidateId));
 	}
 
 	@Override
@@ -86,7 +119,7 @@ public class CandidateService implements CandidateServiceInterface {
 		List<Candidate> listCandidate=getAllCandidate();
 		List<Candidate> listCandidate2=new ArrayList<Candidate>();
 		List<String> JobRequirement=Arrays.asList(primarySkill,secondarySkill,TernarySkill);
-		HashMap<String, Integer> listHash=new HashMap<>();
+		HashMap<Long, Integer> listHash=new HashMap<>();
 		if(!listCandidate.isEmpty()) {
 			for(Candidate candidate:listCandidate) {
 				List<String> candidateSkills=Arrays.asList(candidate.getPrimarySkill(),candidate.getSecondarySkill(),candidate.getTernarySkill());
@@ -94,7 +127,7 @@ public class CandidateService implements CandidateServiceInterface {
 				listHash.put(candidate.getCandidateId(),result);
 			}
 			System.out.println(listHash);
-	Map<String, Integer> sortedMap=listHash.entrySet().stream()
+	Map<Long, Integer> sortedMap=listHash.entrySet().stream()
 			.sorted(Map.Entry.comparingByValue())
 			.collect(Collectors.toMap(
 					Map.Entry::getKey,
@@ -103,7 +136,7 @@ public class CandidateService implements CandidateServiceInterface {
 					LinkedHashMap::new
 					));
 	System.out.println(sortedMap);
-	for(Map.Entry<String, Integer> entry:sortedMap.entrySet()) {
+	for(Map.Entry<Long, Integer> entry:sortedMap.entrySet()) {
 		Candidate candidate=candidateRepositoryInterface.getCandidateByCandidateId(entry.getKey());
 		listCandidate2.add(candidate);
 	}
@@ -132,37 +165,61 @@ public class CandidateService implements CandidateServiceInterface {
 
 	@Override
 	public boolean updateInterviewerId(String interviewerId, String candidateId, Date interviewDate) {
-		if(candidateRepositoryInterface.updateInterviewerId(interviewerId, candidateId,interviewDate))
-			return true;
+		try {
+			if(candidateRepositoryInterface.updateInterviewerId(Long.parseLong(interviewerId), Long.parseLong(candidateId),interviewDate))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public List<Candidate> getCandidateHaveInterviewSchedule() {
-		List<Candidate> getCandidateHaveInterviewScheduleList = candidateRepositoryInterface.getCandidateHaveInterviewSchedule();
-		if(!getCandidateHaveInterviewScheduleList.isEmpty())
+		List<Candidate> getCandidateHaveInterviewScheduleList=null;
+		try {
+			getCandidateHaveInterviewScheduleList = candidateRepositoryInterface.getCandidateHaveInterviewSchedule();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 			return getCandidateHaveInterviewScheduleList;
-		return null;
 	}
 
 	@Override
 	public boolean setCandidateJobdescriptionIdNull(String candidateId) {
-		if(candidateRepositoryInterface.setCandidateJobdescriptionIdNull(candidateId))
-			return true;
+		try {
+			if(candidateRepositoryInterface.setCandidateJobdescriptionIdNull(Long.parseLong(candidateId)))
+				return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateCandidateSetSendMail(String candidateId) {
-		if(candidateRepositoryInterface.updateCandidateSetSendMail(candidateId))
-			return true;
+		try {
+			if(candidateRepositoryInterface.updateCandidateSetSendMail(Long.parseLong(candidateId)))
+				return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateSendOfferLetter(String sendOfferLetter, String candidateId) {
-		if(candidateRepositoryInterface.updateSendOfferLetter(sendOfferLetter, candidateId)) {
-			return true;
+		try {
+			if(candidateRepositoryInterface.updateSendOfferLetter(sendOfferLetter, Long.parseLong(candidateId))) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return false;
 	}

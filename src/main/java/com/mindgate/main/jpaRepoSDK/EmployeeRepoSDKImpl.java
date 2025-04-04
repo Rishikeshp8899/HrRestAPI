@@ -13,7 +13,7 @@ import com.mindgate.main.repository.EmployeeDetailsRepositoryInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Service
+@Service("EmployeeRepoSDKImpl")
 public class EmployeeRepoSDKImpl implements EmployeeDetailsRepositoryInterface {
 
 	Logger logger = LoggerFactory.getLogger(EmployeeRepoSDKImpl.class);
@@ -29,7 +29,7 @@ public class EmployeeRepoSDKImpl implements EmployeeDetailsRepositoryInterface {
 
 		logger.info("EmployeeRepoSDKImpl --> validateEmployee --> insider");
 
-		Employee employee = employeeRepo.getEmployeeByPasswordandUsername(username, password);
+		Employee employee = employeeRepo.findByPasswordAndUsername(username, password);
 		if (employee == null) {
 			logger.error("employee is not present in db");
 			throw new Exception("Validation failed");

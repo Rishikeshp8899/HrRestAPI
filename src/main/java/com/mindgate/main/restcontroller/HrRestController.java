@@ -20,7 +20,6 @@ import com.mindgate.main.domain.Candidate;
 import com.mindgate.main.domain.Employee;
 import com.mindgate.main.domain.JobDescription;
 import com.mindgate.main.domain.Project;
-import com.mindgate.main.repository.ProjectRepositoryInterface;
 import com.mindgate.main.restdomain.RequestHRBody;
 import com.mindgate.main.service.AssesmentServiceInterface;
 import com.mindgate.main.service.CandidateServiceInterface;
@@ -232,7 +231,7 @@ public class HrRestController {
 			Candidate candidate = candidateServiceInterface.getCandidateByCandidateId(requestHRBody.getCandidateId());
 			Assesment assesment = assesmentServiceInterface.getAssesmentByCandidateId(requestHRBody.getCandidateId());
 			JobDescription jobDescription = jobDescriptionServiceInterface
-					.getJobdescriptionById(candidate.getJobDescription().getJobDescriptionId());
+					.getJobdescriptionById(String.valueOf(candidate.getJobDescription().getJobDescriptionId()));
 
 			if (jobDescription == null) {
 				logger.info("Job Description  not found");
@@ -273,7 +272,7 @@ public class HrRestController {
 					candidateServiceInterface.setCandidateJobdescriptionIdNull(requestHRBody.getCandidateId());
 					
 					if (jobDescriptionServiceInterface
-							.decrementRequiredCandidate(candidate.getJobDescription().getJobDescriptionId())) {
+							.decrementRequiredCandidate(String.valueOf( candidate.getJobDescription().getJobDescriptionId()))) {
 						if(employee.getRole().equals("HR")) {
 							if(candidateServiceInterface.updateSendOfferLetter("added", requestHRBody.getCandidateId())) {
 								logger.info("Employee deleted successfully");
@@ -322,7 +321,7 @@ public class HrRestController {
 		}
 		if (employee.getRole().equals("HR")) {
 			List<JobDescription> list = jobDescriptionServiceInterface
-					.getJobDescriptionByPRojectId(employee.getProject().getProjectId());
+					.getJobDescriptionByPRojectId(String.valueOf(employee.getProject().getProjectId()));
 			if (!list.isEmpty()) {
 				logger.info("List found");
 				header.add("List", "found");

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.mindgate.main.domain.Candidate;
 import com.mindgate.main.domain.JobDescription;
-import com.mindgate.main.repository.JobDescriptionRepository;
 import com.mindgate.main.repository.JobDescriptionRepositoryInterface;
 import com.mindgate.main.restcontroller.EmployeeDetailsRestController;
 
@@ -23,38 +22,59 @@ public class JobDescriptionService implements JobDescriptionServiceInterface {
 
 	@Override
 	public List<JobDescription> getJobDescriptionBySendToHR() {
-		List<JobDescription> JobDescriptionList = jobDescriptionRepositoryInterface.getJobDescriptionBySendToHR();
-		if (!JobDescriptionList.isEmpty())
-			return JobDescriptionList;
-		return null;
+		List<JobDescription> JobDescriptionList = null;
+		try {
+			JobDescriptionList = jobDescriptionRepositoryInterface.getJobDescriptionBySendToHR();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return JobDescriptionList;
 	}
 
 	@Override
 	public boolean addJobDescription(JobDescription jobDescription) {
-		if (jobDescriptionRepositoryInterface.addJobDescription(jobDescription))
-			return true;
+		try {
+			if (jobDescriptionRepositoryInterface.addJobDescription(jobDescription))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateJobDescription(JobDescription jobDescription) {
-		if (jobDescriptionRepositoryInterface.updateJobDescription(jobDescription))
-			return true;
+		try {
+			if (jobDescriptionRepositoryInterface.updateJobDescription(jobDescription))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateRequiredCandidate(int requided_candidate, String jobDescriptionId) {
-		if (jobDescriptionRepositoryInterface.updateRequiredCandidate(requided_candidate, jobDescriptionId))
-			return true;
+		try {
+			if (jobDescriptionRepositoryInterface.updateRequiredCandidate(requided_candidate,
+					Long.parseLong(jobDescriptionId)))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateSendToHr(String jobDescriptionId, String value) {
 		logger.info("In service");
-		if (jobDescriptionRepositoryInterface.updateSendToHr(jobDescriptionId, value))
-			return true;
+		try {
+			if (jobDescriptionRepositoryInterface.updateSendToHr(Long.parseLong(jobDescriptionId), value))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
@@ -69,100 +89,132 @@ public class JobDescriptionService implements JobDescriptionServiceInterface {
 
 	@Override
 	public List<JobDescription> getJobDescriptionByPRojectId(String ProjectId) {
-		List<JobDescription> listJobGetJobDescriptionByPRojectId = jobDescriptionRepositoryInterface
-				.getJobDescriptionByPRojectId(ProjectId);
+		List<JobDescription> listJobGetJobDescriptionByPRojectId = null;
+		try {
+			listJobGetJobDescriptionByPRojectId = jobDescriptionRepositoryInterface
+					.getJobDescriptionByPRojectId(Long.parseLong(ProjectId));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		if ((listJobGetJobDescriptionByPRojectId != null) && (!listJobGetJobDescriptionByPRojectId.isEmpty()))
-			return listJobGetJobDescriptionByPRojectId;
-		return null;
+		return listJobGetJobDescriptionByPRojectId;
+
 	}
 
 	@Override
 	public List<JobDescription> getJobJobDescriptionByPRojectIdAndPending(String ProjectId) {
-		List<JobDescription> listJobGetJobDescriptionForPending = jobDescriptionRepositoryInterface
-				.getJobJobDescriptionByPRojectIdAndPending(ProjectId);
+		List<JobDescription> listJobGetJobDescriptionForPending = null;
+		try {
+			listJobGetJobDescriptionForPending = jobDescriptionRepositoryInterface
+					.getJobJobDescriptionByPRojectIdAndPending(Long.parseLong(ProjectId));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		if (!listJobGetJobDescriptionForPending.isEmpty())
-			return listJobGetJobDescriptionForPending;
+		return listJobGetJobDescriptionForPending;
 
-		return null;
 	}
 
 	@Override
 	public List<JobDescription> getJobJobDescriptionByPRojectIdAndNotFullfilled(String ProjectId) {
-		List<JobDescription> listJobGetJobDescriptionForNotFulfiled = jobDescriptionRepositoryInterface
-				.getJobJobDescriptionByPRojectIdAndNotFullfilled(ProjectId);
+		List<JobDescription> listJobGetJobDescriptionForNotFulfiled = null;
+		try {
+			listJobGetJobDescriptionForNotFulfiled = jobDescriptionRepositoryInterface
+					.getJobJobDescriptionByPRojectIdAndNotFullfilled(Long.parseLong(ProjectId));
+		} catch (Exception e) {
 
-		if (!listJobGetJobDescriptionForNotFulfiled.isEmpty())
-			return listJobGetJobDescriptionForNotFulfiled;
-		return null;
+			e.printStackTrace();
+		}
+
+		return listJobGetJobDescriptionForNotFulfiled;
 	}
 
 	@Override
 	public boolean updateJobDescriptionStatus(String jobDescriptionId, String status) {
-		if (jobDescriptionRepositoryInterface.updateJobDescriptionStatus(jobDescriptionId, status))
-			return true;
+		try {
+			if (jobDescriptionRepositoryInterface.updateJobDescriptionStatus(Long.parseLong(jobDescriptionId), status))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateJobDescriptionSalary(String jobDescriptionId, double salary) {
-		if (jobDescriptionRepositoryInterface.updateJobDescriptionSalary(jobDescriptionId, salary))
-			return true;
+		try {
+			if (jobDescriptionRepositoryInterface.updateJobDescriptionSalary(Long.parseLong(jobDescriptionId), salary))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public JobDescription getJobdescriptionById(String jobDescriptionId) {
-		JobDescription jobDescription = jobDescriptionRepositoryInterface.getJobdescriptionById(jobDescriptionId);
+		JobDescription jobDescription = null;
+		try {
+			jobDescription = jobDescriptionRepositoryInterface.getJobdescriptionById(Long.parseLong(jobDescriptionId));
+		} catch (Exception e) {
 
-		if (jobDescription != null) {
-			return jobDescription;
-			
+			e.printStackTrace();
 		}
 
-		return null;
+		return jobDescription;
 	}
 
 	@Override
 	public boolean postJobDescription(String jobDescriptionId) {
-		if (jobDescriptionRepositoryInterface.postJobDescription(jobDescriptionId))
-			return true;
+		try {
+			if (jobDescriptionRepositoryInterface.postJobDescription(Long.parseLong(jobDescriptionId)))
+				return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public List<JobDescription> getAllJobDiscriptionByPost() {
-		List<JobDescription> getAllJobDiscriptionByPostList = jobDescriptionRepositoryInterface
-				.getAllJobDiscriptionByPost();
-
-		if (!getAllJobDiscriptionByPostList.isEmpty()) {
-			return getAllJobDiscriptionByPostList;
+		List<JobDescription> getAllJobDiscriptionByPostList = null;
+		try {
+			getAllJobDiscriptionByPostList = jobDescriptionRepositoryInterface.getAllJobDiscriptionByPost();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return null;
+		return getAllJobDiscriptionByPostList;
 	}
 
 	@Override
 	public boolean decrementRequiredCandidate(String jobDescriptionId) {
 
-		JobDescription jobDescription = jobDescriptionRepositoryInterface.getJobdescriptionById(jobDescriptionId);
+		try {
+			Long jobId = Long.parseLong(jobDescriptionId);
 
-		if (jobDescription.getRequiredCandidate() > 0) {
-			if (jobDescriptionRepositoryInterface.decrementRequiredCandidate(jobDescriptionId)) {
-				JobDescription	jobDescriptionUpdate = jobDescriptionRepositoryInterface.getJobdescriptionById(jobDescriptionId);
-				if (jobDescriptionUpdate.getRequiredCandidate() == 0) {
-					if (jobDescriptionRepositoryInterface.updateStatusJobDescription(jobDescriptionId)) {
-						return true;
-					}
-					jobDescriptionRepositoryInterface.updateJobDescription(jobDescription);
-					return false;
-				}
-				return true;
+		
+			JobDescription jobDescription = jobDescriptionRepositoryInterface.getJobdescriptionById(jobId);
+			if (jobDescription == null || jobDescription.getRequiredCandidate() <= 0) {
+				return false; 
 			}
 
-			return false;
-		}
+			
+			if (!jobDescriptionRepositoryInterface.decrementRequiredCandidate(jobId)) {
+				return false; 
+			}
 
+			// Fetch updated job description
+			JobDescription updatedJobDescription = jobDescriptionRepositoryInterface.getJobdescriptionById(jobId);
+			if (updatedJobDescription != null && updatedJobDescription.getRequiredCandidate() == 0) {
+				return jobDescriptionRepositoryInterface.updateJobDescriptionStatus(jobId, "fulfilled");
+			}
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace(); 
+		}
 		return false;
 
 	}

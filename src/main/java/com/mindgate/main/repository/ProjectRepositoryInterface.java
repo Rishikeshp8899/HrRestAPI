@@ -6,10 +6,10 @@ import com.mindgate.main.domain.Project;
 
 public interface ProjectRepositoryInterface {
     
-    public Project getProjectDetails(String projcetId);
+    public Project getProjectDetails(Long projcetId);
     public boolean updateProjectDetails(Project project);
     public boolean addProjectDetails(Project project);
-    public boolean updateAvailableFund(double availableFund, String projectId);
+    public boolean updateAvailableFund(double availableFund, Long projectId);
     
 
 }

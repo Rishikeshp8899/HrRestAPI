@@ -38,8 +38,13 @@ public class JobDescriptionRestController {
 	public ResponseEntity<String> addJobDescription(@RequestBody JobDescription jobDescription,
 			@PathVariable("employeeId") String employeeId) {
 		HttpHeaders header=new HttpHeaders();
-		Employee employee = employeeDetailsRepositoryInterface.getEmployee(employeeId);
-		if (employee.getRole().equals("Team Leader")) {
+		Employee employee=null;
+		try {
+			employee = employeeDetailsRepositoryInterface.getEmployee(Long.parseLong(employeeId));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (employee !=null&employee.getRole().equals("Team Leader")) {
 			if (jobDescriptionService.addJobDescription(jobDescription))
 				return ResponseEntity.ok("true");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("false");
@@ -52,8 +57,13 @@ public class JobDescriptionRestController {
 	public ResponseEntity<List<JobDescription>> getJobDescriptionByProjectId(
 			@PathVariable("projectId") String projectId,@PathVariable("employeeId") String employeeId) {
 		HttpHeaders header=new HttpHeaders();
-		Employee employee = employeeDetailsRepositoryInterface.getEmployee(employeeId);
-		if(!employee.getRole().equals("Team Leader")|| (employee == null)) {
+		Employee employee=null;
+		try {
+			employee = employeeDetailsRepositoryInterface.getEmployee((Long.parseLong(employeeId)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(employee !=null& !employee.getRole().equals("Team Leader")|| (employee == null)) {
 			header.add("employee ", "is not available");
 			return new ResponseEntity<List<JobDescription>>(null, header, HttpStatusCode.valueOf(400));
 		}

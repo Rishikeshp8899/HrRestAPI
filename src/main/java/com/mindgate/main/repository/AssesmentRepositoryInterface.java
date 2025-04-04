@@ -9,7 +9,7 @@ public interface AssesmentRepositoryInterface {
 
 	public Assesment getSelectedAssesment(Long candidateId) throws Exception;
 
-	public void insertAssesmentDetails(Assesment assesment) throws Exception;
+	public boolean insertAssesmentDetails(Assesment assesment) throws Exception;
 
 	public List<Assesment> getAllAssesmentDetails() throws Exception;
 

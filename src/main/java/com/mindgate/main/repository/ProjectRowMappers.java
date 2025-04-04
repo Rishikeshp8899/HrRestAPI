@@ -9,21 +9,21 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.mindgate.main.domain.Project;
 
-public class ProjectRowMappers implements RowMapper<Project>{
-	Logger logger = LoggerFactory.getLogger(ProjectRowMappers.class);
-
-    @Override
-    public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
-    	logger.info("ProjectRowMappers");
-        Project project = new Project();
-        project.setProjectname(rs.getString("PROJECTNAME"));
-        project.setProjectId(rs.getString("PROJECT_ID"));
-        project.setDescribsion(rs.getString("DESCRIBSION"));
-        project.setBudget(rs.getDouble("BUDGET"));
-        project.setStatus(rs.getString("STATUS"));
-        project.setAvailable_fund(rs.getDouble("AVAILABLE_FUND"));
-        return project;
-    }
+public class ProjectRowMappers {
+//	Logger logger = LoggerFactory.getLogger(ProjectRowMappers.class);
+//
+//    @Override
+//    public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
+//    	logger.info("ProjectRowMappers");
+//        Project project = new Project();
+//        project.setProjectname(rs.getString("PROJECTNAME"));
+//        project.setProjectId(rs.getString("PROJECT_ID"));
+//        project.setDescribsion(rs.getString("DESCRIBSION"));
+//        project.setBudget(rs.getDouble("BUDGET"));
+//        project.setStatus(rs.getString("STATUS"));
+//        project.setAvailable_fund(rs.getDouble("AVAILABLE_FUND"));
+//        return project;
+//    }
     
 
 }

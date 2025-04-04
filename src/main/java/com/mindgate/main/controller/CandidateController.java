@@ -41,7 +41,7 @@ public class CandidateController
 		JobDescription description=new JobDescription();
 		String jdId=(String)session.getAttribute("job_description_id");
 		logger.info(jdId);
-		description.setJobDescriptionId(jdId);
+		description.setJobDescriptionId(Long.parseLong(jdId));
 		candidate.setJobDescription(description);
 		logger.info(candidate.toString());
 		if(candidateServiceInterface.addCandidate(candidate))

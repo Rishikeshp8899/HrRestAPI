@@ -90,7 +90,7 @@ public class TeamLeaderRestToken {
 					
 					System.out.println((Employee)tokenWrapper.getOriginalObject());
 					Project project = projectServiceInterface
-							.getProjectDetails(((Employee)tokenWrapper.getOriginalObject()).getProject().getProjectId());
+							.getProjectDetails(String.valueOf(((Employee)tokenWrapper.getOriginalObject()).getProject().getProjectId()));
 					if (project != null) {
 						header.add("List", "SUCCESFULL");
 						return ResponseEntity.status(HttpStatusCode.valueOf(200)).headers(header).body(project);

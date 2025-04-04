@@ -67,7 +67,7 @@ public class ManagerRestController {
 			return ResponseEntity.status(HttpStatusCode.valueOf(403)).headers(header).body(null);
 		}
 		if (employee.getRole().equals("Project Manager")) {
-			List<JobDescription> list=jobDescriptionService.getJobDescriptionByPRojectId(employee.getProject().getProjectId());
+			List<JobDescription> list=jobDescriptionService.getJobDescriptionByPRojectId(String.valueOf(employee.getProject().getProjectId()));
 			if (!list.isEmpty()) {
 				return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(list);
 			}
@@ -125,8 +125,8 @@ public class ManagerRestController {
 		}
 
 		if (employeePm.getRole().equals("Project Manager")) {
-			if (employeeDetailsService.updateEmployeeProjectId(requestManagerRestController.getEmployeeId(),
-					jobDescription.getProjectId().getProjectId())) {
+			if (employeeDetailsService.updateEmployeeProjectId(String.valueOf(requestManagerRestController.getEmployeeId()),
+				String.valueOf(jobDescription.getProjectId().getProjectId()))) {
 				if (jobDescriptionService
 						.decrementRequiredCandidate(requestManagerRestController.getJobDescriptionId())) {
 					return ResponseEntity.status(HttpStatusCode.valueOf(201)).body("true");

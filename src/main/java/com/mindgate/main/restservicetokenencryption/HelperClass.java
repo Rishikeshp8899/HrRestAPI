@@ -48,9 +48,8 @@ public class HelperClass {
 		if (tokenWrapper != null) {
 			if (tokenWrapper.getKey().equals("Welcome@123")) {
 				Employee employee = employeeDetailsService
-						.getEmployee(tokenWrapper.getOriginalObject().getEmployeeId());
+						.getEmployee(String.valueOf(tokenWrapper.getOriginalObject().getEmployeeId()));
 				if (employee != null) {
-					System.out.println(employee.toString());
 					if (employee.getPassword().equals(tokenWrapper.getOriginalObject().getPassword())) {
 						if (employee.getFirstname().equals(tokenWrapper.getOriginalObject().getFirstname()))
 							return true;

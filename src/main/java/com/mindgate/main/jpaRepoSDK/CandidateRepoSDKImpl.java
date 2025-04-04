@@ -15,7 +15,7 @@ import com.mindgate.main.jpaRepo.CandidateRepo;
 import com.mindgate.main.jpaRepo.EmployeeRepo;
 import com.mindgate.main.repository.CandidateRepositoryInterface;
 
-@Service
+@Service("CandidateRepoSDKImpl")
 public class CandidateRepoSDKImpl implements CandidateRepositoryInterface {
 
 	private static final Logger logger = LoggerFactory.getLogger(CandidateRepoSDKImpl.class);
@@ -29,6 +29,7 @@ public class CandidateRepoSDKImpl implements CandidateRepositoryInterface {
 	@Override
 	public boolean addCandidate(Candidate candidate) throws Exception {
 		try {
+			
 
 			logger.info("CandidateRepoSDKImpl --> addCandidate --> insider");
 
