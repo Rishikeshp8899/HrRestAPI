@@ -1,0 +1,173 @@
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#product-overview h1{
+
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 5%;
+    margin-bottom: 1%;
+}
+.line
+{
+    width: 8%;
+    margin: auto;
+    height: 3px;
+    background-color: #FF9A00;
+    border: none;
+    border-radius: 5px;
+}
+#product-overview h2{
+    text-align: center;
+    font-size: 22px;
+    margin: 2% ;
+    margin-bottom: 0%;
+    
+}
+#product-overview p{
+    text-align: center;
+    margin: 5%;
+    margin-bottom: 0%;
+    font-size: 20px ;
+    line-height: 1.3rem;
+
+}
+
+.card-group{
+    padding: 10%;
+    padding-top:20px;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    display: grid;
+    grid-template-columns:repeat(2, 45%);
+    gap: 0.5%;
+    height: 70%;
+    align-items: center;
+
+
+}
+
+.card{
+    
+    margin: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    border:1px solid;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+.card .columns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:1%;
+    margin: 1%;
+}
+
+.leftColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 2.5%;
+    
+}
+.rightColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 2.5%;
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.button button{
+    background: #7569b6ae;
+    color: white;
+    font: inherit;
+    border: 1.5px solid #7569b6ae;
+    border-radius: 8px;
+    padding: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.title{
+    text-align: center;
+}
+.button button:hover,
+.button button:active{
+    background: #FFEBB2;
+    color: #7569b6ae ;
+}
+
+.about{
+
+    font-size: 20px;
+    margin:2%;
+}
+#plans{
+    padding: 0%;
+    margin-top: 0% ; 
+}
+
+
+
+.logo
+{
+    width: 75px;
+    
+}
+nav
+{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(247, 235, 235); */
+     background-color: #7569b649;
+    align-items: center;
+}
+
+nav div ul
+{
+    display: flex;
+    justify-content: space-around;
+    padding: 0% 20%;
+    padding-right: 10%;
+    margin: 0%;
+    gap: 2rem;
+}
+.containerleft
+{
+    width: 30%;
+    padding-left: 5%;
+}
+.containerright
+{
+    width: 60%;
+}
+nav div ul li
+{
+    list-style: none;
+}
+nav div ul li a
+{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: '' sans-serif;
+}
+.sucessfully
+{
+	color: red;
+	font-size: 1.5rem;
+	text-align: center;
+}

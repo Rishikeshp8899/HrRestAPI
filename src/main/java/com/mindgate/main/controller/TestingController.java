@@ -44,11 +44,8 @@ public class TestingController
 	{
 		httpSession.setAttribute("otp", 0);
 		List<JobDescription> jobDescriptions=descriptionServiceInterface.getJobdescriptionByPosted();
-		System.out.println("inside jd");
-		System.out.println(jobDescriptions);
 		if(jobDescriptions.isEmpty())
 		{
-			System.out.println("empty");
 			model.addAttribute("empty", true);
 		}
 		else

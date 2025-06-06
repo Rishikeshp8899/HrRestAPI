@@ -1,0 +1,162 @@
+*
+{
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.logo
+{
+    width: 75px;
+    
+}
+nav
+{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(247, 235, 235); */
+     background-color: #7569b649;
+    align-items: center;
+}
+
+nav div ul
+{
+    display: flex;
+    justify-content: space-around;
+    padding: 0% 20%;
+    padding-right: 10%;
+    margin: 0%;
+    gap: 2rem;
+}
+.containerleft
+{
+    width: 30%;
+    padding-left: 5%;
+}
+.containerright
+{
+    width: 60%;
+}
+nav div ul li
+{
+    list-style: none;
+}
+nav div ul li a
+{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: '' sans-serif;
+}
+.carosal
+{
+    width: 100%;
+    height: 50rem;
+}
+.services
+{
+    width: 90%;
+    margin: auto;
+}
+.service_heading{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: lighter;
+    margin-top: 1.5rem;
+}
+.srvice_container
+{
+    display: grid;
+    grid-template-columns: repeat(3,20%);
+    justify-content: space-around;
+    
+}
+.Carrer_card
+{
+    text-align: left;
+    line-height: 30px;
+    margin-top: 1rem;
+    padding-top: 40px;
+}
+.Carrer_card h1
+{
+    margin: 10px 0px;
+    font-weight: lighter;
+    font-size: 1.6rem;
+}
+.Carrer_card p
+{
+    color: rgb(97, 97, 97);
+}
+.learn
+{
+    text-decoration: none;
+    color: orangered;
+    font-size: 0.8rem;
+}
+footer
+{
+    background-color: #7569b649;
+    padding: 2rem 0rem;
+    margin-top: 4rem;
+}
+.conainer_top
+{
+    display: flex;
+    width: 80%;
+    margin: auto;
+   justify-content: space-between;
+}
+.conainer_top  div ul li
+{
+    list-style: none;
+    font-size: 1rem;
+    font-weight: lighter;
+    color: rgba(0, 0, 0, 0.582);
+    line-height: 1.4rem;
+}
+.container_bottom
+{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}
+.footer_img
+{
+    width: 120px;
+}
+.copy
+{
+	color: black;
+}
+.conainer_top  div ul li h2
+{
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+    color: black;
+}
+.container_bottom div ul 
+{
+    display: flex;
+}
+.container_bottom div ul li
+{
+    list-style: none;
+}
+.Sitemap
+{
+    margin-left: 5px;
+    padding-left: 4px;
+    border-left: 2px solid black;
+}
+
+
+
+
+
+
+nav div ul li a:hover
+{
+    color: antiquewhite;
+}

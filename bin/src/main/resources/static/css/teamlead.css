@@ -1,0 +1,49 @@
+.heading
+{
+	text-align: center;
+	margin: 10px 0px;
+	font-weight: bolder;
+}
+
+table,tr,th,td
+{
+	border: 1.5px solid black;
+	border-collapse: collapse;
+}
+table
+{
+	border-radius:5px; 
+}
+th {
+	background-color: #7569b649;
+	height: 2rem;
+	color: blue;
+}
+
+td
+{
+	height: 2rem;
+	
+}
+.container
+{
+	display: flex;
+	justify-content: center;
+}
+
+.container table
+{
+	width: 80%;	
+	margin: auto;
+	text-align: center;
+}
+.add
+{
+	border: 1px solid black;
+	background: #7569b649;
+	color: black;
+	width: 3rem;
+	
+}
+
+

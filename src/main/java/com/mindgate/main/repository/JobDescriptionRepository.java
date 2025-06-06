@@ -22,7 +22,7 @@ public class JobDescriptionRepository implements JobDescriptionRepositoryInterfa
 
 	private final String GET_JOB_DESCRIPTION_BY_SEND_TO_HR = "SELECT * FROM job_description where send_to_hr='yes' and status='notFulfiled'";
 	
-	private final String GET_JOB_DESCRIPTION_BY_posted = "SELECT * FROM job_description where POSTJOBDESCRIPTION='Post' and status='notFulfiled'";
+	private final String GET_JOB_DESCRIPTION_BY_posted = "SELECT * FROM job_description where postjobdescription='Post' and status='notFulfiled'";
 	
 
 	private final String ADD_JOB_DESCRIPTION = "INSERT INTO JOB_DESCRIPTION(jobdescription_id,ROLE,LOCATION,EXPERIENCE,ABOUT,PROJECT_ID,REQUIRED_CANDIDATE, PRIMARY_SKILL,SECONDARY_SKILL, TERNARY_SKILL)VALUES('JD'||jobdescription_id_sequence.NEXTVAL,?,?,?,?,?,?,?,?,?)";
@@ -49,7 +49,7 @@ public class JobDescriptionRepository implements JobDescriptionRepositoryInterfa
 	
 	private final String accepted_job_request="select * from job_description where status ='notFulfiled' and project_id=? and send_to_hr='no'";
 	
-	private final String post_the_job = "UPDATE job_description SET POSTJOBDESCRIPTION='Post' WHERE jobdescription_id=?";
+	private final String post_the_job = "UPDATE job_description SET postjobdescription='Post' WHERE jobdescription_id=?";
 	
 	
 

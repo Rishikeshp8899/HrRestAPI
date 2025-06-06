@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.crypto.Data;
-
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
@@ -20,7 +20,7 @@ public class CandidateRepository implements CandidateRepositoryInterface {
     @Autowired
     JdbcTemplate jdbcTemplate;
     private final String ADD_ONE_CANDIDATE = "INSERT INTO candidate_details(candidate_id,job_description_id,first_name,last_name,age,experience,email,contact_no,primary_skill,secondary_skill,ternary_skill)"
-            + "    VALUES('CAN'||candidate_id_sequence.NEXTVAL,?,?,?,?,?,?,?,?,?,?)";
+            + "    VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     private final String ASSIGN_INTERVIEWER = "UPDATE candidate_details SET INTERVIEWER_ID = ? WHERE candidate_id=?";
 
     private final String DELETE_CANDIDATE = "DELETE FROM candidate_details WHERE candidate_id = ?";
@@ -57,7 +57,7 @@ public class CandidateRepository implements CandidateRepositoryInterface {
     private final String UPDATE_CANDIDATE_befor_OFFER_LETTER = "UPDATE candidate_details SET JOB_DESCRIPTION_ID = null, SEND_OFFERLETTER = 'no' WHERE CANDIDATE_ID = ?";
     @Override
     public boolean addCandidate(Candidate candidate) {
-        Object[] object = { candidate.getJobDesignation().getJobDescriptionId(), candidate.getFirstName(),candidate.getLastName(), candidate.getAge(),
+        Object[] object = {"CAN"+UUID.randomUUID().toString().substring(0, 8), candidate.getJobDesignation().getJobDescriptionId(), candidate.getFirstName(),candidate.getLastName(), candidate.getAge(),
                 candidate.getExperience(), candidate.getEmail(), candidate.getContactNumber(), candidate.getPrimarySkill(),candidate.getSecondarySkill(),candidate.getTernarySkill() };
         int result = jdbcTemplate.update(ADD_ONE_CANDIDATE, object);
         if (result > 0)
